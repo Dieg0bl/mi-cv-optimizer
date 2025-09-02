@@ -7,21 +7,21 @@ from fpdf import FPDF
 from config import Config
 
 # -----------------------------------------------------------------------------
-# Cargar el modelo AI (T5-base) de Hugging Face, gratuito y de código abierto.
+# Cargar el modelo de procesamiento de texto de Hugging Face, gratuito y de código abierto.
 # -----------------------------------------------------------------------------
 def load_model():
-    """Carga el modelo AI para optimizar CVs."""
+    """Carga el modelo de procesamiento de texto para optimizar CVs."""
     try:
-        print("Cargando modelo AI para optimización de CV...")
+        print("Cargando modelo de procesamiento de texto para optimización de CV...")
         model = pipeline("text2text-generation", model="t5-base")
-        print("✅ Modelo AI cargado correctamente.")
+        print("✅ Modelo de procesamiento cargado correctamente.")
         return model
     except Exception as e:
         print("❌ Error al cargar el modelo:", e)
         return None
 
 # Cargar el modelo globalmente
-ai_improver = load_model()
+text_improver = load_model()
 
 # -----------------------------------------------------------------------------
 # Verificar si el archivo tiene una extensión permitida.
@@ -96,12 +96,12 @@ def standardize_cv_text(text):
     return output
 
 # -----------------------------------------------------------------------------
-# Optimizar el CV utilizando IA manteniendo el idioma original.
+# Optimizar el CV utilizando procesamiento de texto manteniendo el idioma original.
 # -----------------------------------------------------------------------------
 def improve_cv_text(text, model):
     standardized_text = standardize_cv_text(text)
     if model is None:
-        return "Error: No se pudo cargar el modelo AI."
+        return "Error: No se pudo cargar el modelo de procesamiento."
     cv_template = (
         "1. Información Personal (Nombre, contacto, dirección, etc.)\n"
         "2. Perfil Profesional (Resumen breve de experiencia y objetivos)\n"
@@ -118,7 +118,7 @@ def improve_cv_text(text, model):
         "\n\nCurrículum Original:\n" + standardized_text +
         "\n\nDevuélveme únicamente el CV optimizado y reestructurado, sin explicaciones adicionales."
     )
-    print("Enviando prompt a la IA para optimización...")
+    print("Enviando texto al modelo para optimización...")
     try:
         improved = model(prompt, max_length=2048, do_sample=False)
         optimized_text = improved[0]['generated_text']

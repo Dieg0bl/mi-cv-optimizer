@@ -7,7 +7,7 @@ from helpers import (
     is_cv,
     improve_cv_text,
     create_pdf_from_text,
-    ai_improver
+    text_improver
 )
 from config import Config
 
@@ -25,7 +25,7 @@ def health():
 
 @routes.route("/status", methods=["GET"])
 def model_status():
-    status = "cargado" if ai_improver else "no disponible"
+    status = "cargado" if text_improver else "no disponible"
     return jsonify({"model_status": status})
 
 @routes.route('/process', methods=['POST'])
@@ -52,7 +52,7 @@ def process_cv_route():
             return jsonify({'error': 'El archivo no parece ser un CV válido.'}), 400
 
         time.sleep(2)
-        improved_text = improve_cv_text(extracted_text, ai_improver)
+        improved_text = improve_cv_text(extracted_text, text_improver)
         os.remove(filepath)
         return jsonify({'improved_text': improved_text})
     except Exception as e:
