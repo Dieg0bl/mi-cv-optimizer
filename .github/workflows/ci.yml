@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-client:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: client/package-lock.json
+        
+    - name: Install client dependencies
+      run: |
+        cd client
+        npm ci
+        
+    - name: Build client
+      run: |
+        cd client
+        npm run build
+
+  test-server:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+        
+    - name: Install server dependencies
+      run: |
+        cd server
+        pip install -r requirements.txt
+        
+    - name: Verify server can start
+      run: |
+        cd server/src
+        python -c "import app; print('Server imports successfully')"
