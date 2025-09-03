@@ -1,70 +1,163 @@
-# Getting Started with Create React App
+# Mi CV Optimizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una aplicación web inteligente que utiliza inteligencia artificial para optimizar currículums vitae (CVs) y ayudar a los usuarios a mejorar sus oportunidades laborales.
 
-## Available Scripts
+## 🎯 Propósito del Proyecto
 
-In the project directory, you can run:
+Mi CV Optimizer es una herramienta que permite a los usuarios:
+- Subir su CV en formato PDF
+- Procesarlo con inteligencia artificial para identificar áreas de mejora
+- Recibir una versión optimizada del CV con sugerencias y mejoras
+- Descargar el CV mejorado en formato PDF
 
-### `npm start`
+La aplicación está diseñada para ayudar a profesionales a destacar en el mercado laboral mediante la optimización automatizada de sus currículums.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tecnologías Utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend (Cliente)
+- **React 19.0.0** - Framework de JavaScript para la interfaz de usuario
+- **JavaScript (ES6+)** - Lenguaje de programación principal
+- **CSS3** - Estilos y diseño responsivo
+- **Axios** - Cliente HTTP para comunicación con la API
+- **Create React App** - Herramienta de configuración y build
 
-### `npm test`
+### Backend (Servidor)
+- **Python** - Lenguaje de programación principal
+- **Flask** - Framework web minimalista
+- **Flask-CORS** - Manejo de CORS para comunicación entre dominios
+- **Transformers** - Biblioteca de Hugging Face para procesamiento de IA
+- **PyTorch** - Framework de machine learning
+- **pdfminer.six** - Extracción de texto de archivos PDF
+- **FPDF** - Generación de archivos PDF
+- **Werkzeug** - Utilidades WSGI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Infraestructura y Deployment
+- **Heroku** - Plataforma de deployment (configurado con Procfile)
+- **Docker** - Containerización (Dockerfile incluido)
 
-### `npm run build`
+## 🚀 Instalación y Ejecución
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerrequisitos
+- Node.js (versión 16 o superior)
+- Python 3.8 o superior
+- npm o yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Configuración del Proyecto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clonar el repositorio:**
+```bash
+git clone https://github.com/Dieg0bl/mi-cv-optimizer.git
+cd mi-cv-optimizer
+```
 
-### `npm run eject`
+2. **Configurar el Backend:**
+```bash
+cd server
+pip install -r requeriments.txt
+cd src
+python app.py
+```
+El servidor estará disponible en `http://localhost:5000`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Configurar el Frontend:**
+```bash
+cd client
+npm install
+npm start
+```
+La aplicación estará disponible en `http://localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Ejecución en Desarrollo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Para ejecutar la aplicación completa en modo desarrollo:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Terminal 1 - Backend:**
+```bash
+cd server/src
+python app.py
+```
 
-## Learn More
+2. **Terminal 2 - Frontend:**
+```bash
+cd client
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Build para Producción
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Frontend:**
+```bash
+cd client
+npm run build
+```
 
-### Code Splitting
+**Backend:**
+El backend está listo para producción. Para deployment en Heroku, el Procfile ya está configurado.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📁 Estructura del Proyecto
 
-### Analyzing the Bundle Size
+```
+mi-cv-optimizer/
+├── client/                 # Aplicación React (Frontend)
+│   ├── src/               # Código fuente del frontend
+│   ├── public/            # Archivos públicos
+│   └── package.json       # Dependencias del frontend
+├── server/                # API Flask (Backend)
+│   ├── src/              # Código fuente del backend
+│   ├── requeriments.txt  # Dependencias de Python
+│   └── Dockerfile        # Configuración de Docker
+├── Procfile              # Configuración para Heroku
+└── README.md             # Este archivo
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔧 Scripts Disponibles
 
-### Making a Progressive Web App
+### Frontend (client/)
+- `npm start` - Ejecuta la app en modo desarrollo
+- `npm test` - Ejecuta las pruebas
+- `npm run build` - Construye la app para producción
+- `npm run eject` - Expone configuraciones de Create React App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Backend (server/)
+- `python app.py` - Ejecuta el servidor Flask
+- `pip install -r requeriments.txt` - Instala dependencias
 
-### Advanced Configuration
+## 🌐 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+La aplicación está configurada para deployment en Heroku:
+1. El `Procfile` especifica cómo ejecutar la aplicación
+2. El frontend debe ser construido y servido estáticamente
+3. El backend maneja la API y el procesamiento de IA
 
-### Deployment
+## 📝 Uso de la Aplicación
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Accede a la aplicación web
+2. Selecciona un archivo PDF de tu CV
+3. Haz clic en "Subir y Optimizar"
+4. Espera mientras la IA procesa tu CV
+5. Revisa el texto optimizado generado
+6. Descarga tu CV mejorado en formato PDF
 
-### `npm run build` fails to minify
+## 🔒 Privacidad y Seguridad
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La aplicación está diseñada para proteger la privacidad de los usuarios:
+- Los archivos PDF se procesan temporalmente
+- No se almacenan datos personales permanentemente
+- Se garantiza la confidencialidad de la información del CV
+
+## 🤝 Contribución
+
+Para contribuir al proyecto:
+1. Fork el repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+---
+
+© 2025 Optimiza tu CV. Protegemos tus datos y garantizamos tu privacidad.
